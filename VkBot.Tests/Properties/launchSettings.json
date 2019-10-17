@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "VkBot.Tests": {
+      "commandName": "Project",
+      "workingDirectory": "D:\\Documents\\Visual Studio 2017\\Projects\\VkBot\\VkBot\\bin\\Debug\\netcoreapp2.1"
+    }
+  }
+}

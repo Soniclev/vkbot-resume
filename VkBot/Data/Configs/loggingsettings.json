@@ -1,0 +1,71 @@
+﻿{
+    "Logging": {
+        "NLog": {
+            "IncludeScopes": false,
+            "ParseMessageTemplates": true,
+            "CaptureMessageProperties": true
+        }
+    },
+    "NLog": {
+        "autoreload": true,
+        "internalLogLevel": "Info",
+        "internalLogFile": "${currentdir}/VarData/Logs/nlog-internal.log",
+        "throwConfigExceptions": true,
+        "targets": {
+			"console": {
+                "type": "Console",
+                "layout": "${date}|${level:uppercase=true}|${message} ${exception:format=tostring}|${logger}|${all-event-properties}"
+            },
+			"file_trace": {
+                "type": "AsyncWrapper",
+                "target": {
+                    "wrappedFile": {
+                        "type": "File",
+                        "fileName": "${currentdir}/VarData/Logs/trace-${shortdate}.log",
+						"encoding": "utf-8",
+                        "layout": "${date:format=o:padding=-5}    ${level:uppercase=true:padding=-5}    ${logger:padding=-50}    ${message:raw=false}"
+                    }
+                }
+            },
+            "file_info": {
+                "type": "AsyncWrapper",
+                "target": {
+                    "wrappedFile": {
+                        "type": "File",
+                        "fileName": "${currentdir}/VarData/Logs/info-${shortdate}.log",
+						"encoding": "utf-8",
+                        "layout": "${date:format=o}    ${level:uppercase=true}    ${logger:padding=-50}    ${message:raw=false}"
+                    }
+                }
+            },
+			"file_error": {
+                "type": "AsyncWrapper",
+                "target": {
+                    "wrappedFile": {
+                        "type": "File",
+                        "fileName": "${currentdir}/VarData/Logs/errors-${shortdate}.log",
+						"encoding": "utf-8",
+                        "layout": "${date:format=o}    ${level:uppercase=true}    ${logger:padding=-50}    ${message:raw=false}"
+                    }
+                }
+            }
+        },
+        "rules": [
+            {
+                "logger": "*",
+                "minLevel": "Trace",
+                "writeTo": "file_trace"
+            },
+			{
+                "logger": "*",
+                "minLevel": "Info",
+                "writeTo": "file_info,Console"
+            },
+			{
+                "logger": "*",
+                "minLevel": "Error",
+                "writeTo": "file_error"
+            }
+        ]
+    }
+}

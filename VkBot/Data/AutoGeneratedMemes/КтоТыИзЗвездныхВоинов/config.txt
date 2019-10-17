@@ -1,0 +1,5 @@
+CreateFrom('background.png');
+RenderUserAvatar(x=5, y=5, w=404, h=444);
+RenderImage('text_filled_background.png', x=50, y=368, w=334, h=66);
+RenderText('%first_name% %last_name%', x=222, y=375, align=center, fontSize=30);
+Done();

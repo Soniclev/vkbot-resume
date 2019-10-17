@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "VkBot": {
+      "commandName": "Project",
+      "workingDirectory": "D:\\Documents\\Visual Studio 2017\\Projects\\VkBot\\VkBot"
+    }
+  }
+}
